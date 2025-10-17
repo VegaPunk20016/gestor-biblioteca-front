@@ -1,0 +1,32 @@
+/* Register.css */
+
+.auth-page-centered {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* ================================================= */
+  /* APLICACIÓN DE LA IMAGEN DE FONDO */
+  /* ================================================= */
+  
+  /* 1. Ruta de la imagen (Vite/Webpack maneja la ruta desde /src/assets) */
+  /* Ajusta la ruta si tu archivo CSS no está directamente en /src/pages/Landing */
+  background-image: url('src/assets/fondo_registro.svg'); 
+  
+  /* 2. Asegurar que la imagen cubra todo el fondo */
+  background-size: cover; 
+  
+  /* 3. Evitar que la imagen se repita */
+  background-repeat: no-repeat;
+  
+  /* 4. Asegurar que el fondo sea fijo respecto al viewport (opcional, pero mejora el look) */
+  background-attachment: fixed; 
+  
+  /* 5. Centrar la imagen, especialmente si la pantalla es más alta que ancha */
+  background-position: center center;
+  
+  padding: 20px;
+  width: 100%;
+}
+/* ... el resto de tus estilos ... */

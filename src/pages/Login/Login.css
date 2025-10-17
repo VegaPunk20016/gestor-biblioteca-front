@@ -1,0 +1,27 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  
+  /* ================================================= */
+  /* APLICACIÓN DEL FONDO RESPONSIVO */
+  /* ================================================= */
+  
+  /* 1. Ruta de la imagen (ajusta la ruta relativa si tu CSS está en otra ubicación) */
+  background-image: url('src/assets/fondo_login.svg'); 
+  
+  /* 2. CLAVE para la responsividad: Cubre toda la pantalla sin repetirse */
+  background-size: cover; 
+  background-repeat: no-repeat;
+  
+  /* 3. Centra la imagen y la fija al viewport (opcional, pero mejora el efecto) */
+  background-position: center center;
+  background-attachment: fixed; 
+}
+
+.login-container {
+  width: 100%;
+  max-width: 450px; 
+}

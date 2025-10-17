@@ -1,0 +1,111 @@
+/* ================================================= */
+/* 1. Contenedor Principal: .register-form */
+/* (Tarjeta Blanca Flotante) */
+/* ================================================= */
+.register-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 32px; /* Espacioso */
+  
+  /* CAMBIO CLAVE: Fondo blanco y sombra moderna */
+  background: white; 
+  border-radius: 12px; 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra para "flotar" */
+  
+  /* Fuente Base (Consistente con Landing) */
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -.5px;
+  font-weight: 400; 
+  color: #333; 
+}
+
+/* ================================================= */
+/* 2. Título: .register-title */
+/* (Audaz y Alineado a la Izquierda) */
+/* ================================================= */
+.register-title { 
+  /* Estilos Consistentes con el Título del Landing */
+  color: #000;
+  text-align: left; /* Alineado a la izquierda */
+  font-family: 'Inter', sans-serif;
+  font-size: 48px; 
+  font-weight: 800; /* Extra-negrita */
+  line-height: 1.1;
+  letter-spacing: -2px; 
+  
+  /* Eliminar la sombra de texto del diseño anterior */
+  text-shadow: none; 
+  
+  margin-bottom: 32px; 
+  padding: 0; 
+}
+
+/* ================================================= */
+/* 3. Contenido y Espaciado */
+/* (Usa Gap para espaciado equitativo) */
+/* ================================================= */
+.register-form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* Espaciado uniforme */
+}
+
+/* ================================================= */
+/* 4. Estilos para los Inputs */
+/* ================================================= */
+.register-form input { 
+  background-color: #f7f7f7; /* Gris muy claro */
+  border: 1px solid #e0e0e0; /* Borde sutil */
+  border-radius: 8px; 
+  padding: 14px 18px; 
+  box-shadow: none; 
+  width: 100%;
+  font-size: 1rem;
+}
+
+/* ================================================= */
+/* 5. Estilos para el Botón (Debe usar variant="login" o variant="dark" en el JSX) */
+/* ================================================= */
+/* NOTA: Las clases .btn--login o .btn--dark deben estar definidas en Button.css
+   para el fondo negro sólido y texto blanco. */
+.register-button {
+  /* Si el botón es un elemento nativo y no un componente React, usa estos estilos: */
+  background: #000000; 
+  color: white;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.register-button:hover:not(:disabled) {
+  background: #333333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ================================================= */
+/* 6. Estilo del Enlace (si lo mantienes) */
+/* ================================================= */
+.switch-link {
+  font-weight: 600; 
+  color: #1f2937; 
+  text-decoration: none; 
+}
+
+.switch-link:hover {
+  text-decoration: underline;
+}
+
+/* El estilo de error se mantiene sin cambios */
+.form-error {
+  background-color: #fef2f2;
+  color: #dc2626;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+  font-size: 14px;
+  text-align: center;
+}

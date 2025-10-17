@@ -1,0 +1,97 @@
+/* ================================================= */
+/* 1. Contenedor Principal: .login-form */
+/* ================================================= */
+.login-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 32px; /* Aumentar ligeramente el padding para un look más espacioso */
+  
+  /* CAMBIO CLAVE: Fondo blanco y sombra sutil */
+  background: white; /* Fondo blanco para integrar con la página */
+  border-radius: 12px; /* Más redondeado para un look suave */
+  
+  /* Sombra más definida para "flotar" el formulario */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
+  
+  /* Fuente Base (Consistente con Landing) */
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -.5px;
+  font-weight: 400; 
+  color: #333; 
+}
+
+/* ================================================= */
+/* 2. Título: .form-title */
+/* ================================================= */
+.form-title {
+  /* CAMBIOS CLAVE: Más grande, más negrita, letra más apretada */
+  color: #000;
+  text-align: left; /* Alinear a la izquierda para un look moderno */
+  font-family: 'Inter', sans-serif;
+  font-size: 48px; /* Tamaño grande */
+  font-weight: 800; /* Extra-negrita, como el título del Landing */
+  line-height: 1.1;
+  letter-spacing: -2px; /* Espaciado ajustado */
+  
+  /* ELIMINAR O SUAVIZAR EL TEXT-SHADOW */
+  text-shadow: none; /* Eliminar la sombra de texto */
+  
+  margin-bottom: 32px; /* Más espacio debajo del título */
+  padding: 0;
+}
+
+/* ================================================= */
+/* 3. Contenido y Espaciado */
+/* ================================================= */
+.login-form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* Ligeramente más espacioso */
+}
+
+/* ================================================= */
+/* 4. Estilos para los Inputs */
+/* ================================================= */
+.login-form input {
+  background-color: #f7f7f7; /* Fondo gris muy claro para diferenciar */
+  border: 1px solid #e0e0e0; /* Borde sutil */
+  border-radius: 8px; /* Más redondeado */
+  padding: 14px 18px; /* Más padding */
+  box-shadow: none; /* Eliminar sombras de input, usar solo borde */
+  width: 100%;
+  font-size: 1rem;
+}
+
+/* ================================================= */
+/* 5. Estilos para el Botón de Login (Usando variant="login" o variant="dark") */
+/* ================================================= */
+/*
+  Si usas <Button variant="login"> en LoginForm.js, debes asegurarte 
+  de que tu .btn--login en Button.css tenga un fondo negro sólido:
+*/
+/* --- En Button.css --- */
+.btn--login {
+  background: #000000; /* Fondo negro sólido */
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra de botón */
+}
+
+.btn--login:hover:not(:disabled) {
+  background: #333333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ================================================= */
+/* 6. Estilo del Enlace (si lo mantienes) */
+/* ================================================= */
+.switch-link {
+  font-weight: 600; /* Seminegrita para que se note */
+  color: #1f2937; /* Color oscuro */
+  text-decoration: none; /* Quitar el subrayado por defecto */
+}
+
+.switch-link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,264 @@
+/* ================================================= */
+/* Estructura Principal de la Página (Wrapper) */
+/* (Aquí se controla el layout de los tres frames) */
+/* ================================================= */
+.landing-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* Apila Navbar, Main Content y Footer */
+  background: white; /* El fondo de toda la página es blanco */
+  font-family: 'Inter', sans-serif; /* Fuente global */
+  letter-spacing: -.5px;
+}
+
+/* ================================================= */
+/* FRAME 1: Barra de Navegación */
+/* ================================================= */
+.navbar {
+  width: 100%;
+  padding: 15px 40px; /* Relleno */
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0; /* Línea divisoria sutil */
+  display: flex;
+  justify-content: space-between; /* Brand a la izquierda, acciones a la derecha */
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra ligera para la barra */
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  letter-spacing: -.5px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.navbar-logo-icon {
+  margin-right: 8px;
+  font-size: 1.5rem;
+}
+
+
+.navbar-actions .nav-button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 10px; /* Espacio entre botones */
+}
+
+.nav-button--text {
+  background: none;
+  color: #333;
+}
+
+.nav-button--text:hover {
+  background-color: #f0f0f0;
+}
+
+.nav-button--filled {
+  background-color: #000; /* Fondo negro */
+  color: white;
+}
+
+.nav-button--filled:hover {
+  background-color: #333;
+}
+
+
+/* ================================================= */
+/* FRAME 2: Cuerpo Principal (Main Content) */
+/* ================================================= */
+.landing-main-content {
+  flex-grow: 1; /* Ocupa todo el espacio restante verticalmente */
+  display: flex;
+  align-items: center; /* Centra el contenido verticalmente dentro del main */
+  justify-content: center;
+  padding: 40px 20px; /* Relleno general para el contenido */
+}
+
+.landing-container {
+  max-width: 1200px; /* Mantener ancho máximo */
+  width: 100%;
+}
+
+.landing-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* Ajustado para que el texto sea más ancho que la imagen */
+  gap: 60px;
+  align-items: center;
+  background: none; /* ELIMINAR el fondo blanco y sombra, ahora el fondo es de la página */
+  padding: 0; /* ELIMINAR el padding, ya que el contenido principal tiene el suyo */
+  box-shadow: none; /* ELIMINAR la sombra */
+  border-radius: 0;
+}
+
+.landing-text {
+  padding-right: 0; /* Eliminar padding derecho si el gap ya lo maneja */
+  text-align: left; /* Asegurar alineación izquierda */
+}
+
+.landing-title {
+  font-size: 3.5rem; /* Un poco más grande para el impacto */
+  font-weight: 800; /* Más negrita como en la imagen */
+  line-height: 1.1;
+  color: #1f2937;
+  margin-bottom: 24px;
+  letter-spacing: -1.5px; /* Ajustar el espaciado para un título más compacto */
+}
+
+.landing-subtitle {
+  font-size: 1.3rem; /* Ligeramente más grande */
+  line-height: 1.6;
+  color: #6b7280;
+  margin-bottom: 40px;
+}
+
+.landing-button { /* Mantener los estilos del botón si quieres que aparezca */
+  background: #000; /* Color sólido negro como en la imagen */
+  color: white;
+  border: none;
+  padding: 16px 30px; /* Un poco más pequeño */
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px; /* Ligeramente menos redondeado */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.landing-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.landing-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-illustration {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Eliminar espacio extra */
+}
+
+/* Opcional: Si mantienes el placeholder */
+.image-placeholder {
+  display: none; /* Ocultar el placeholder si usas una imagen real */
+}
+
+
+/* ================================================= */
+/* FRAME 3: Pie de Página */
+/* ================================================= */
+.landing-footer {
+  width: 100%;
+  text-align:e; /* Centrar el SVG */
+  background-color: white; /* Color de fondo del footer */
+  border-top: 1px solid #e0e0e0; /* Borde superior sutil */
+}
+
+/* ESTILOS PARA EL SVG DEL FOOTER */
+.landing-footer-logo-svg {
+  height: 60px; /* Ajusta la altura para que coincida con la imagen (ej. 60px) */
+  width: auto; /* Mantiene la proporción */
+  display: block; /* Asegura que ocupe su propia línea */
+  align-items: end;
+
+}
+
+/* ================================================= */
+/* Responsive */
+/* ================================================= */
+
+@media (max-width: 968px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+  .landing-main-content {
+    padding: 30px 20px;
+  }
+  .landing-content {
+    grid-template-columns: 1fr; /* Una columna para móvil */
+    gap: 40px;
+    text-align: center;
+  }
+  .landing-text {
+    padding-right: 0;
+  }
+  .landing-title {
+    font-size: 2.8rem;
+    letter-spacing: -1px;
+  }
+  .landing-subtitle {
+    font-size: 1.1rem;
+  }
+  .landing-footer-logo {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    flex-direction: column; /* Apilar brand y acciones */
+    padding: 10px 15px;
+  }
+  .navbar-actions {
+    margin-top: 10px;
+  }
+  .navbar-actions .nav-button {
+    margin-left: 5px; /* Menos espacio entre botones en móvil */
+    margin-right: 5px;
+  }
+  .landing-main-content {
+    padding: 20px 15px;
+  }
+  .landing-title {
+    font-size: 2.2rem;
+    letter-spacing: -0.8px;
+  }
+  .landing-subtitle {
+    font-size: 1rem;
+  }
+  .landing-footer-logo {
+    font-size: 2.5rem;
+  }
+}
+/* Landing.css */
+
+.landing-illustration-svg {
+  /* Asegura que el SVG se ajuste al ancho de su columna */
+  max-width: 100%; 
+  height: auto; 
+  display: block;
+}
+
+/* El .landing-content debe tener la estructura de grid: */
+.landing-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* Para hacer la columna izquierda más ancha */
+  gap: 60px;
+  align-items: center;
+}
+
+@media (max-width: 968px) {
+  /* ... Estilos responsivos existentes ... */
+
+  .landing-footer-logo-svg {
+    height: 45px; /* Ajustar tamaño para pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 640px) {
+  /* ... Estilos responsivos existentes ... */
+
+  .landing-footer-logo-svg {
+    height: 35px; /* Ajustar tamaño para móviles */
+  }
+}
