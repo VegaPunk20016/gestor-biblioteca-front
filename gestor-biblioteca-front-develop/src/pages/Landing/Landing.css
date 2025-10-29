@@ -1,0 +1,388 @@
+/* ================================================= */
+/* LANDING PAGE - DISEÑO BIBLIOTECA DIGITAL */
+/* ================================================= */
+
+.landing-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #f5f5dc 0%, #faf8f3 50%, #fff8e7 100%);
+  font-family: 'Georgia', 'Garamond', serif;
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow-x: hidden; /* Solo ocultar scroll horizontal */
+  overflow-y: auto; /* PERMITIR scroll vertical */
+}
+
+/* Patrón sutil de textura de papel */
+.landing-page-wrapper::before {
+  content: '';
+  position: absolute; /* CAMBIADO de fixed a absolute */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 69, 19, 0.02) 2px,
+      rgba(139, 69, 19, 0.02) 3px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.landing-page-wrapper > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ================================================= */
+/* NAVBAR - ESTILO BIBLIOTECA */
+/* ================================================= */
+
+.navbar {
+  width: 100%;
+  padding: 20px 40px;
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f3 100%);
+  border-bottom: 3px solid #8b4513;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.15);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 1.5rem;
+  color: #3e2723;
+  font-family: 'Georgia', serif;
+}
+
+.navbar-logo-icon {
+  margin-right: 12px;
+  font-size: 2rem;
+}
+
+.navbar-logo-text {
+  color: #8b4513;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar-actions .nav-button {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.5px;
+}
+
+.nav-button--text {
+  background: none;
+  color: #5d4037;
+  border: 2px solid transparent;
+}
+
+.nav-button--text:hover {
+  background-color: #f5f5dc;
+  border-color: #8b4513;
+  color: #3e2723;
+}
+
+.nav-button--filled {
+  background: linear-gradient(145deg, #8b4513 0%, #6d4c41 100%);
+  color: #f5f5dc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-button--filled:hover {
+  background: linear-gradient(145deg, #a0522d 0%, #8b4513 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ================================================= */
+/* MAIN CONTENT - HERO SECTION */
+/* ================================================= */
+
+.landing-main-content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.landing-container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.landing-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 80px;
+  align-items: center;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  box-shadow: 
+    0 10px 40px rgba(139, 69, 19, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(139, 69, 19, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.landing-text {
+  text-align: left;
+}
+
+.landing-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #3e2723;
+  margin-bottom: 28px;
+  letter-spacing: -1px;
+  font-family: 'Georgia', serif;
+  text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.1);
+}
+
+/* Efecto decorativo en el título */
+.landing-title::first-letter {
+  font-size: 4.5rem;
+  color: #8b4513;
+  font-weight: 900;
+}
+
+.landing-subtitle {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: #5d4037;
+  margin-bottom: 40px;
+  font-family: 'Georgia', serif;
+  font-weight: 400;
+}
+
+.landing-button {
+  background: linear-gradient(145deg, #8b4513 0%, #6d4c41 100%);
+  color: #f5f5dc;
+  border: none;
+  padding: 18px 40px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Georgia', serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 
+    0 6px 15px rgba(139, 69, 19, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.landing-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.landing-button:hover {
+  background: linear-gradient(145deg, #a0522d 0%, #8b4513 100%);
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 20px rgba(139, 69, 19, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.landing-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 3px 10px rgba(139, 69, 19, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.landing-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.landing-illustration,
+.landing-illustration-svg {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 10px 30px rgba(139, 69, 19, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.landing-illustration:hover,
+.landing-illustration-svg:hover {
+  transform: scale(1.05);
+}
+
+/* ================================================= */
+/* FOOTER - ESTILO BIBLIOTECA */
+/* ================================================= */
+
+.landing-footer {
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(180deg, #faf8f3 0%, #f5f5dc 100%);
+  border-top: 3px solid #8b4513;
+  padding: 30px 20px;
+  box-shadow: 0 -4px 15px rgba(139, 69, 19, 0.15);
+}
+
+.landing-footer-logo-svg {
+  height: 60px;
+  width: auto;
+  display: inline-block;
+  filter: drop-shadow(2px 2px 4px rgba(139, 69, 19, 0.2));
+}
+
+/* ================================================= */
+/* RESPONSIVE */
+/* ================================================= */
+
+@media (max-width: 968px) {
+  .navbar {
+    padding: 20px;
+  }
+
+  .landing-main-content {
+    padding: 40px 20px;
+  }
+
+  .landing-content {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .landing-text {
+    text-align: center;
+  }
+
+  .landing-title {
+    font-size: 2.8rem;
+    letter-spacing: -0.8px;
+  }
+
+  .landing-subtitle {
+    font-size: 1.15rem;
+  }
+
+  .landing-footer-logo-svg {
+    height: 45px;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .navbar-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navbar-actions .nav-button {
+    flex: 1;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+  }
+
+  .landing-main-content {
+    padding: 30px 15px;
+  }
+
+  .landing-content {
+    padding: 20px;
+    gap: 30px;
+  }
+
+  .landing-title {
+    font-size: 2.2rem;
+    letter-spacing: -0.5px;
+  }
+
+  .landing-title::first-letter {
+    font-size: 3rem;
+  }
+
+  .landing-subtitle {
+    font-size: 1rem;
+  }
+
+  .landing-button {
+    padding: 14px 30px;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .landing-footer-logo-svg {
+    height: 35px;
+  }
+}
+
+/* ================================================= */
+/* ANIMACIONES ADICIONALES */
+/* ================================================= */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.landing-text {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.landing-image {
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}

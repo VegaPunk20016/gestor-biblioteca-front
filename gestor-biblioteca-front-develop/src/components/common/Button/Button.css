@@ -1,0 +1,72 @@
+/* ==================================== */
+/* 1. CLASE BASE: .btn */
+/* ==================================== */
+.btn {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px; /* Ajustado a 8px */
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -1.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Estado de deshabilitado y activo (aplicable a todas las variantes) */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* ==================================== */
+/* 2. VARIANTES DE COLOR */
+/* ==================================== */
+
+/* Variante de fondo negro (para contraste máximo) */
+.btn--dark {
+  background: #000000;
+  color: #ffffff; /* Texto blanco */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Sombra más oscura */
+}
+
+.btn--dark:hover:not(:disabled) {
+  /* Al hacer hover, puede aligerarse o usar una sombra más intensa */
+  background: #1a1a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+/* Variante de fondo blanco (Consistente con los inputs del formulario) */
+.btn--light {
+  background: #ffffff;
+  color: #333333; /* Texto oscuro */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Sombra sutil */
+}
+
+.btn--light:hover:not(:disabled) {
+  background-color: #f0f0f0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+/* VARIACIÓN PARA EL LOGIN (Fondo blanco, Texto oscuro) */
+/* Esta es la variante que necesitas usar para el LoginForm */
+.btn--login {
+  background: white;
+  color: #333; /* Texto oscuro para el fondo blanco */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil para destacarlo */
+}
+
+.btn--login:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}

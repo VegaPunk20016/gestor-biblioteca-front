@@ -1,0 +1,162 @@
+body {
+  background: linear-gradient(135deg, #3e2723 0%, #5d4037 50%, #6d4c41 100%);
+  font-family: 'Georgia', serif;
+  color: #3e2723;
+}
+
+/* ===== NAVBAR ===== */
+.libros-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #4e342e;
+  color: #f5f5dc;
+  padding: 15px 30px;
+  border-bottom: 3px solid #3e2723;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.libros-title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.libros-nav-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  background: #f5f5dc;
+  border: 2px solid #8b4513;
+  color: #3e2723;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Georgia', serif;
+}
+
+.nav-btn:hover {
+  background: #8b4513;
+  color: #fff;
+}
+
+.nav-btn.logout {
+  background: #a52a2a;
+  border-color: #5c1f1f;
+  color: #fff;
+}
+
+/* ===== CONTENEDOR ===== */
+.libros-container {
+  display: grid;
+  gap: 30px;
+  padding: 40px 20px;
+  justify-content: center;
+}
+
+/* ===== TARJETAS ===== */
+.libros-card {
+  background: #fffaf0;
+  border-radius: 14px;
+  border: 3px solid #8b4513;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  padding: 25px 30px;
+  width: 100%;
+  max-width: 800px;
+  transition: transform 0.3s ease;
+}
+
+.libros-card:hover {
+  transform: scale(1.02);
+}
+
+.libros-card h2 {
+  text-align: center;
+  color: #3e2723;
+  border-bottom: 2px solid #8b4513;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-family: 'Georgia', serif;
+}
+
+/* ===== FORMULARIOS ===== */
+.libros-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.libros-form input,
+.libros-form select {
+  flex: 1 1 240px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 2px solid #d7ccc8;
+  background: #fffef9;
+  font-family: 'Georgia', serif;
+}
+
+.libros-form input:focus {
+  outline: none;
+  border-color: #8b4513;
+  box-shadow: 0 0 5px rgba(139, 69, 19, 0.3);
+}
+
+/* ===== BOTONES ===== */
+.action-btn {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Georgia', serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-btn.crear {
+  background: #4caf50;
+}
+
+.action-btn.actualizar {
+  background: #2196f3;
+}
+
+.action-btn.eliminar {
+  background: #e53935;
+}
+
+.action-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== TABLA ===== */
+.libros-table-container {
+  overflow-x: auto;
+}
+
+.libros-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.libros-table th,
+.libros-table td {
+  border: 1px solid #d7ccc8;
+  padding: 10px;
+  text-align: left;
+}
+
+.libros-table th {
+  background: #8b4513;
+  color: #fffaf0;
+}
+
+.libros-table tr:nth-child(even) {
+  background: #faf8f3;
+}
