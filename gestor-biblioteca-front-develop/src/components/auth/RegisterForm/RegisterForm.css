@@ -1,0 +1,63 @@
+.register-form {
+  width: 420px;
+  padding: 35px 30px;
+  background: linear-gradient(145deg, #f5f5dc, #faf8f3);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  border: 3px solid #8b4513;
+}
+
+.register-title {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #3e2723;
+  font-size: 28px;
+  font-weight: 600;
+  font-family: 'Georgia', serif;
+}
+
+.register-form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #d7ccc8;
+  border-radius: 6px;
+  font-family: 'Georgia', serif;
+}
+
+.register-button {
+  padding: 16px;
+  background: linear-gradient(145deg, #8b4513, #6d4c41);
+  color: #f5f5dc;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-family: 'Georgia', serif;
+}
+
+.switch-login-button {
+  margin-top: 10px;
+  padding: 12px;
+  background-color: #f0f0f0;
+  color: #3e2723;
+  border: 1px solid #d7ccc8;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Georgia', serif;
+  text-transform: uppercase;
+}
+
+.switch-login-button:hover {
+  background-color: #e0e0e0;
+  color: #6d4c41;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .register-form { width: 90%; padding: 25px 20px; }
+  .switch-login-button { font-size: 13px; padding: 10px; }
+}

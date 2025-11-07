@@ -1,0 +1,135 @@
+:root {
+  --cap-bg: #f7efe9; /* cafecito claro */
+  --cap-dark: #5b3b2e;
+  --cap-mid: #a77b56;
+  --cap-accent: #c9a57a;
+  --cap-paper: #fff8f0;
+}
+
+/* Fondo general */
+.dashboard-capuchino {
+  background: var(--cap-bg);
+  min-height: 100vh;
+}
+
+/* NAVBAR */
+.nav-cafe {
+  background: linear-gradient(90deg, var(--cap-mid), var(--cap-dark));
+  padding: 12px 20px;
+  border-radius: 12px;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Cards tipo libro */
+.book-card-cap {
+  background: #fffaf6;
+  border: 2px solid #d3b49f;
+  border-radius: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.book-card-cap:hover {
+  box-shadow: 0 0 25px rgba(139, 69, 19, 0.4);
+  border-color: #8b4513;
+}
+
+/* figura de libro */
+.book-figure {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  perspective: 800px;
+}
+
+.book-spine-cap {
+  width: 18px;
+  border-radius: 6px 0 0 6px;
+  background: linear-gradient(180deg, var(--cap-dark), var(--cap-mid));
+}
+
+.book-front-cap {
+  flex: 1;
+  background: linear-gradient(180deg, var(--cap-paper), #fffefb);
+  border-radius: 6px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card-cap:hover .book-front-cap {
+  transform: rotateY(-6deg);
+}
+
+/* Textos */
+.book-title-cap {
+  font-weight: 700;
+  color: var(--cap-dark);
+  font-size: 1rem;
+}
+.book-meta-cap {
+  color: #85614f;
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+/* MODAL PERFIL */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+.modal-content-custom {
+  background: var(--cap-paper);
+  padding: 20px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 4px 25px rgba(91, 59, 46, 0.4);
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-cafe {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+.modal-profile-cap {
+  width: 320px;
+  background: #fff8f0; /* café claro */
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(91,59,46,0.2);
+  border: 1px solid rgba(91,59,46,0.06);
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  background: #e6d9cc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
