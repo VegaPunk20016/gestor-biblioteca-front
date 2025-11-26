@@ -103,7 +103,7 @@ const AppContent = () => {
         <Route
           path="/multas"
           element={
-            isAuthenticated && (user?.role === 'Usuario' || user?.role === 'Admin')
+            isAuthenticated && (user?.role === 'Usuario' || user?.role === 'Bibliotecario')
               ? <Multas />
               : <Navigate to="/" />
           }

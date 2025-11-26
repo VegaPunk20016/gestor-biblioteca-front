@@ -33,10 +33,8 @@ const Prestamos = () => {
         console.warn("No se pudieron cargar las solicitudes:", err);
         setSolicitudes([]);
       }
-    }
 
-    // Solicitudes de renovación: Bibliotecario/Administrador
-    if (user?.role === "Bibliotecario" || user?.role === "Administrador") {
+      // Solicitudes de renovación: Bibliotecario/Administrador
       try {
         const res = await fetch("https://readhubbookv2.somee.com/api/Renovaciones/RenovPendientes", {
           headers: { Authorization: `Bearer ${token}` },
@@ -48,21 +46,20 @@ const Prestamos = () => {
         console.warn("No se pudieron cargar las solicitudes de renovación:", err);
         setSolicitudesRenovacion([]);
       }
-    }
-
-    // Préstamos vencidos del usuario (solo para usuario normal)
-    try {
-      const res = await fetch(
-        `https://readhubbookv2.somee.com/api/Prestamos/Usuario/${user.id}/Vencidos`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      if (!res.ok) throw new Error("Error al cargar préstamos");
-      const data = await res.json();
-      setPrestamos(Array.isArray(data) ? data : []);
-    } catch (err) {
-      console.warn("No se pudieron cargar los préstamos:", err);
-      setPrestamos([]);
-      // De momento evitamos alert para no molestar al usuario
+    } else {
+      // Préstamos vencidos del usuario (solo para usuario normal)
+      try {
+        const res = await fetch(
+          `https://readhubbookv2.somee.com/api/Prestamos/Usuario/${user.id}/Vencidos`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        if (!res.ok) throw new Error("Error al cargar préstamos");
+        const data = await res.json();
+        setPrestamos(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.warn("No se pudieron cargar los préstamos:", err);
+        setPrestamos([]);
+      }
     }
   };
 
@@ -77,7 +74,10 @@ const Prestamos = () => {
     try {
       Swal.fire({ title: "Procesando...", didOpen: () => Swal.showLoading() });
       const item = prestamos.find((p) => p.loanId === loanId)?.items[itemIndex];
-      if (!item) return;
+      if (!item || !item.loanItemId) {
+        Swal.fire("Error", "No se encontró el item del préstamo.", "error");
+        return;
+      }
       const res = await fetch(
         `https://readhubbookv2.somee.com/api/Prestamos/return-item/${item.loanItemId}`,
         {
@@ -86,11 +86,14 @@ const Prestamos = () => {
           body: JSON.stringify({ quantity: item.quantity }),
         }
       );
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(errorText || "Error al devolver");
+      }
       Swal.fire("Devuelto", `El libro "${item.bookTitle}" fue devuelto.`, "success");
       cargarDatos();
-    } catch {
-      Swal.fire("Error", "No se pudo marcar como devuelto.", "error");
+    } catch (err) {
+      Swal.fire("Error", err.message || "No se pudo marcar como devuelto.", "error");
     }
   };
 
@@ -105,11 +108,14 @@ const Prestamos = () => {
           body: JSON.stringify({ loanId, extraDays }),
         }
       );
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(errorText || "Error al solicitar renovación");
+      }
       Swal.fire("Renovado", "La solicitud de renovación se envió correctamente.", "success");
       cargarDatos();
-    } catch {
-      Swal.fire("Error", "No se pudo solicitar la renovación.", "error");
+    } catch (err) {
+      Swal.fire("Error", err.message || "No se pudo solicitar la renovación.", "error");
     }
   };
 
@@ -288,40 +294,44 @@ const Prestamos = () => {
           </>
         )}
 
-        {/* Préstamos del usuario */}
-        <h2 className="dashboard-section-title mt-5">📌 Mis Préstamos</h2>
-        {prestamos.length === 0 && <p>No hay préstamos vencidos.</p>}
-        {prestamos.map((loan) => (
-          <div key={loan.loanId} className="mb-3 p-2 border rounded">
-            <p>
-              <b>Usuario:</b> {loan.userId}
-            </p>
-            <p>
-              <b>Préstamo:</b> {new Date(loan.loanDate).toLocaleDateString()} →{" "}
-              {new Date(loan.returnDate).toLocaleDateString()}
-            </p>
-            <ul>
-              {loan.items.map((item, idx) => (
-                <li key={idx}>
-                  {item.bookTitle} ({item.quantity}) -{" "}
-                  <b style={{ color: item.isReturned ? "green" : "red" }}>
-                    {item.isReturned ? "Devuelto" : "Pendiente"}
-                  </b>
-                  {!item.isReturned && (
-                    <>
-                      <button className="btn btn-sm btn-success ms-2" onClick={() => devolverItem(loan.loanId, idx)}>
-                        Devolver
-                      </button>
-                      <button className="btn btn-sm btn-warning ms-1" onClick={() => renovarPrestamo(loan.loanId, 7)}>
-                        Renovar 7 días
-                      </button>
-                    </>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {/* Préstamos del usuario - SOLO para usuarios normales */}
+        {user?.role !== "Bibliotecario" && user?.role !== "Administrador" && (
+          <>
+            <h2 className="dashboard-section-title mt-5">📌 Mis Préstamos</h2>
+            {prestamos.length === 0 && <p>No hay préstamos vencidos.</p>}
+            {prestamos.map((loan) => (
+              <div key={loan.loanId} className="mb-3 p-2 border rounded">
+                <p>
+                  <b>Usuario:</b> {loan.userId}
+                </p>
+                <p>
+                  <b>Préstamo:</b> {new Date(loan.loanDate).toLocaleDateString()} →{" "}
+                  {new Date(loan.returnDate).toLocaleDateString()}
+                </p>
+                <ul>
+                  {loan.items.map((item, idx) => (
+                    <li key={idx}>
+                      {item.bookTitle} ({item.quantity}) -{" "}
+                      <b style={{ color: item.isReturned ? "green" : "red" }}>
+                        {item.isReturned ? "Devuelto" : "Pendiente"}
+                      </b>
+                      {!item.isReturned && (
+                        <>
+                          <button className="btn btn-sm btn-success ms-2" onClick={() => devolverItem(loan.loanId, idx)}>
+                            Devolver
+                          </button>
+                          <button className="btn btn-sm btn-warning ms-1" onClick={() => renovarPrestamo(loan.loanId, 7)}>
+                            Renovar 7 días
+                          </button>
+                        </>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </>
+        )}
 
         {/* Modal de solicitudes */}
         <AnimatePresence>
