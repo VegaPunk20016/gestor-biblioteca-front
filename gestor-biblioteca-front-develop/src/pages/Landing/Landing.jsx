@@ -2,12 +2,15 @@ import React from 'react';
 import './Landing.css';
 
 // Componente simple para la barra de navegación (se podría extraer a un archivo separado)
+// Importa tu logo
+import logo from '../../assets/logo.png'; // Ajusta la ruta si es diferente
+
 const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <span className="navbar-logo-icon">📖</span>
-        <span className="navbar-logo-text">ReadHub</span>
+        {/* Solo el logo, sin texto */}
+        <img src={logo} alt="ReadHub Logo" className="navbar-logo-icon" />
       </div>
     </nav>
   );

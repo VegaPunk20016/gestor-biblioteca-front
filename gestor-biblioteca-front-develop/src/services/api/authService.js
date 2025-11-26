@@ -1,14 +1,14 @@
 import axios from 'axios';
 
-// Cambia esta URL por la de tu API .NET
-const API_BASE_URL = 'http://localhost:5119/api'; 
+// URL base de la API en producción
+const API_BASE_URL = 'https://readhub.somee.com/api'; 
 
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 10000,
+  timeout: 30000, // Aumentado a 30 segundos
 });
 
 // Interceptor para requests
@@ -40,10 +40,35 @@ api.interceptors.response.use(
 export const authService = {
   async login(credentials) {
     try {
+      console.log('📤 Enviando credenciales de login a la API:', { email: credentials.email });
       const response = await api.post('/Auth/login', credentials);
+      console.log('✅ Respuesta del login:', response.data);
       return response.data;
     } catch (error) {
-      const message = error.response?.data?.message || error.message || 'Error en el login';
+      console.error('❌ Error en login:', error);
+      
+      // Manejo específico de errores
+      let message = 'Error en el login';
+      
+      if (error.code === 'ECONNABORTED' || error.message.includes('timeout')) {
+        message = 'La solicitud está tardando demasiado. Por favor verifica tu conexión a internet e intenta nuevamente.';
+      } else if (error.code === 'ERR_NETWORK' || error.message.includes('Network Error')) {
+        message = 'Error de conexión. Verifica tu conexión a internet.';
+      } else if (error.response?.status === 401) {
+        message = 'Credenciales inválidas. Verifica tu email y contraseña.';
+      } else if (error.response?.status === 404) {
+        message = 'El servicio de autenticación no está disponible.';
+      } else if (error.response?.status === 500) {
+        const serverMessage = error.response?.data?.message || error.response?.data?.error;
+        message = serverMessage || 'Error interno del servidor. Por favor intenta más tarde o contacta al administrador.';
+      } else if (error.response?.status >= 500) {
+        message = 'Error del servidor. Por favor intenta más tarde.';
+      } else if (error.response?.data?.message) {
+        message = error.response.data.message;
+      } else if (error.message) {
+        message = error.message;
+      }
+      
       throw new Error(message);
     }
   },
@@ -56,16 +81,43 @@ export const authService = {
       return response.data;
     } catch (error) {
       console.error('❌ Error en registro:', error);
-      const message = error.response?.data?.message || error.message || 'Error en el registro';
+      
+      // Manejo específico de errores
+      let message = 'Error en el registro';
+      
+      if (error.code === 'ECONNABORTED' || error.message.includes('timeout')) {
+        message = 'La solicitud está tardando demasiado. Por favor verifica tu conexión a internet e intenta nuevamente.';
+      } else if (error.code === 'ERR_NETWORK' || error.message.includes('Network Error')) {
+        message = 'Error de conexión. Verifica tu conexión a internet.';
+      } else if (error.response?.status === 400) {
+        message = error.response?.data?.message || 'Datos inválidos. Verifica la información ingresada.';
+      } else if (error.response?.status === 409) {
+        message = 'El usuario ya existe. Intenta con otro email.';
+      } else if (error.response?.status === 500) {
+        const serverMessage = error.response?.data?.message || error.response?.data?.error;
+        message = serverMessage || 'Error interno del servidor. Por favor intenta más tarde o contacta al administrador.';
+      } else if (error.response?.status >= 500) {
+        message = 'Error del servidor. Por favor intenta más tarde.';
+      } else if (error.response?.data?.message) {
+        message = error.response.data.message;
+      } else if (error.message) {
+        message = error.message;
+      }
+      
       throw new Error(message);
     }
   },
 
   async getProfile() {
     try {
-      const response = await api.get('/auth/profile');
+      const response = await api.get('/Auth/profile');
       return response.data;
     } catch (error) {
+      // Si es 404, es normal que no exista el endpoint de perfil, no lanzar error
+      if (error.response?.status === 404) {
+        console.log('Endpoint de perfil no disponible, continuando sin perfil');
+        return null;
+      }
       const message = error.response?.data?.message || error.message || 'Error al obtener perfil';
       throw new Error(message);
     }

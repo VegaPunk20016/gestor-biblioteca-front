@@ -1,23 +1,22 @@
 /* ================================================= */
-/* LANDING PAGE - DISEÑO BIBLIOTECA DIGITAL */
+/* LANDING PAGE - DISEÑO BIBLIOTECA DIGITAL (CAFÉ) */
 /* ================================================= */
 
 .landing-page-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #f5f5dc 0%, #faf8f3 50%, #fff8e7 100%);
+  background: linear-gradient(180deg, #f3e6d2 0%, #f7ede0 50%, #fdf5ec 100%); /* Café clarito */
   font-family: 'Georgia', 'Garamond', serif;
   letter-spacing: 0.3px;
   position: relative;
-  overflow-x: hidden; /* Solo ocultar scroll horizontal */
-  overflow-y: auto; /* PERMITIR scroll vertical */
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-/* Patrón sutil de textura de papel */
 .landing-page-wrapper::before {
   content: '';
-  position: absolute; /* CAMBIADO de fixed a absolute */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -27,9 +26,9 @@
       0deg,
       transparent,
       transparent 2px,
-      rgba(139, 69, 19, 0.02) 2px,
-      rgba(139, 69, 19, 0.02) 3px
-    );
+      rgba(139, 69, 19, 0.03) 2px,
+      rgba(139, 69, 19, 0.03) 3px
+    ); /* Patrón sutil */
   pointer-events: none;
   z-index: 0;
 }
@@ -40,18 +39,18 @@
 }
 
 /* ================================================= */
-/* NAVBAR - ESTILO BIBLIOTECA */
+/* NAVBAR - CAFÉ FUERTE */
 /* ================================================= */
 
 .navbar {
   width: 100%;
-  padding: 20px 40px;
-  background: linear-gradient(180deg, #ffffff 0%, #faf8f3 100%);
-  border-bottom: 3px solid #8b4513;
+  padding: 12px 30px;
+  background: linear-gradient(180deg, #b8956a 0%, #a67c52 100%);
+  border-bottom: 2px solid #8b6f47;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.15);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-brand {
@@ -60,18 +59,12 @@
   font-weight: 700;
   letter-spacing: 0.5px;
   font-size: 1.5rem;
-  color: #3e2723;
   font-family: 'Georgia', serif;
 }
 
 .navbar-logo-icon {
-  margin-right: 12px;
-  font-size: 2rem;
-}
-
-.navbar-logo-text {
-  color: #8b4513;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  height: 150px; /* Tamaño más grande */
+  width: auto;
 }
 
 .navbar-actions {
@@ -93,24 +86,23 @@
 
 .nav-button--text {
   background: none;
-  color: #5d4037;
+  color: #fdf5ec;
   border: 2px solid transparent;
 }
 
 .nav-button--text:hover {
-  background-color: #f5f5dc;
-  border-color: #8b4513;
-  color: #3e2723;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #fdf5ec;
 }
 
 .nav-button--filled {
-  background: linear-gradient(145deg, #8b4513 0%, #6d4c41 100%);
-  color: #f5f5dc;
+  background: linear-gradient(145deg, #a0522d 0%, #8b4513 100%);
+  color: #fdf5ec;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .nav-button--filled:hover {
-  background: linear-gradient(145deg, #a0522d 0%, #8b4513 100%);
+  background: linear-gradient(145deg, #d2691e 0%, #a0522d 100%);
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
@@ -138,11 +130,11 @@
   gap: 80px;
   align-items: center;
   padding: 40px;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(211, 184, 153, 0.7); /* Fondo café clarito */
   border-radius: 20px;
   box-shadow: 
     0 10px 40px rgba(139, 69, 19, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
   border: 2px solid rgba(139, 69, 19, 0.2);
   backdrop-filter: blur(10px);
 }
@@ -155,14 +147,13 @@
   font-size: 3.5rem;
   font-weight: 800;
   line-height: 1.15;
-  color: #3e2723;
+  color: #5c3317;
   margin-bottom: 28px;
   letter-spacing: -1px;
   font-family: 'Georgia', serif;
-  text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.1);
+  text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.2);
 }
 
-/* Efecto decorativo en el título */
 .landing-title::first-letter {
   font-size: 4.5rem;
   color: #8b4513;
@@ -172,15 +163,15 @@
 .landing-subtitle {
   font-size: 1.3rem;
   line-height: 1.7;
-  color: #5d4037;
+  color: #6d4c41;
   margin-bottom: 40px;
   font-family: 'Georgia', serif;
   font-weight: 400;
 }
 
 .landing-button {
-  background: linear-gradient(145deg, #8b4513 0%, #6d4c41 100%);
-  color: #f5f5dc;
+  background: linear-gradient(145deg, #a0522d 0%, #8b4513 100%);
+  color: #fdf5ec;
   border: none;
   padding: 18px 40px;
   font-size: 1.2rem;
@@ -217,7 +208,7 @@
 }
 
 .landing-button:hover {
-  background: linear-gradient(145deg, #a0522d 0%, #8b4513 100%);
+  background: linear-gradient(145deg, #d2691e 0%, #a0522d 100%);
   transform: translateY(-3px);
   box-shadow: 
     0 8px 20px rgba(139, 69, 19, 0.4),
@@ -252,16 +243,18 @@
 }
 
 /* ================================================= */
-/* FOOTER - ESTILO BIBLIOTECA */
+/* FOOTER - CAFÉ FUERTE */
 /* ================================================= */
 
 .landing-footer {
   width: 100%;
   text-align: center;
-  background: linear-gradient(180deg, #faf8f3 0%, #f5f5dc 100%);
-  border-top: 3px solid #8b4513;
-  padding: 30px 20px;
-  box-shadow: 0 -4px 15px rgba(139, 69, 19, 0.15);
+  background: linear-gradient(180deg, #a67c52 0%, #b8956a 100%);
+  border-top: 2px solid #8b6f47;
+  padding: 20px;
+  color: #3e2723;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
 }
 
 .landing-footer-logo-svg {

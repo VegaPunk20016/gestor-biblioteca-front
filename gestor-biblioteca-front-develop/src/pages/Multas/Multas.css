@@ -1,0 +1,79 @@
+/* Copiado y adaptado del Dashboard para que quede igual de consistente */
+
+:root {
+  --cap-bg: #f3e6d2;
+  --cap-dark: #5b3b2e;
+  --cap-mid: #a77b56;
+  --cap-accent: #c9a57a;
+  --cap-paper: #fff8f0;
+}
+
+.dashboard-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #f3e6d2 0%, #f7ede0 50%, #fdf5ec 100%);
+  font-family: 'Georgia', 'Garamond', serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.dashboard-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 69, 19, 0.03) 2px,
+      rgba(139, 69, 19, 0.03) 3px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dashboard-wrapper > * {
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard-content {
+  flex-grow: 1;
+  padding-bottom: 40px;
+}
+
+.navbar-user-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.navbar-user-name {
+  color: #3e2723;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'Georgia', serif;
+}
+
+.navbar-user-role {
+  color: #6d4c41;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: 'Georgia', serif;
+  margin-top: 2px;
+}
+
+.dashboard-section-title {
+  color: #3e2723;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Georgia', serif;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(139, 69, 19, 0.2);
+}

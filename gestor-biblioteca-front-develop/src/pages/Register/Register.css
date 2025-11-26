@@ -1,72 +1,60 @@
 /* Register.css */
 
-.auth-page-centered {
+.register-page-wrapper {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  /* ================================================= */
-  /* FONDO DE BIBLIOTECA DIGITAL - SIN IMAGEN */
-  /* ================================================= */
-  
-  /* Eliminamos la imagen y usamos gradiente café elegante */
-  background-image: none; 
-  background: linear-gradient(135deg, #3e2723 0%, #5d4037 50%, #6d4c41 100%);
-  
-  /* Patrón de líneas simulando estantes de biblioteca */
+  flex-direction: column;
+  background: linear-gradient(180deg, #f3e6d2 0%, #f7ede0 50%, #fdf5ec 100%);
+  font-family: 'Georgia', 'Garamond', serif;
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.register-page-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: 
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 35px,
-      rgba(139, 69, 19, 0.1) 35px,
-      rgba(139, 69, 19, 0.1) 38px
-    ),
     repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 180px,
-      rgba(101, 67, 33, 0.15) 180px,
-      rgba(101, 67, 33, 0.15) 185px
-    ),
-    linear-gradient(135deg, #3e2723 0%, #5d4037 50%, #6d4c41 100%);
-  
-  background-size: cover; 
-  background-repeat: no-repeat;
-  background-attachment: fixed; 
-  background-position: center center;
-  
-  padding: 20px;
-  width: 100%;
-  position: relative;
-  overflow-x: hidden;
-}
-
-/* Efecto decorativo de libros con emojis */
-.auth-page-centered::before {
-  content: '📚 📖 📕 📗 📘 📙';
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 120px;
-  opacity: 0.03;
-  letter-spacing: 40px;
+      transparent 2px,
+      rgba(139, 69, 19, 0.03) 2px,
+      rgba(139, 69, 19, 0.03) 3px
+    );
   pointer-events: none;
   z-index: 0;
 }
 
-/* Asegurar que el contenido esté sobre el decorado */
-.auth-page-centered > * {
+.register-page-wrapper > * {
   position: relative;
   z-index: 1;
 }
 
+.register-main-content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Responsive para móviles */
 @media (max-width: 768px) {
-  .auth-page-centered::before {
-    font-size: 80px;
-    letter-spacing: 20px;
+  .register-main-content {
+    padding: 40px 15px;
   }
 }
